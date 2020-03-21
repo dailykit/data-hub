@@ -77,13 +77,13 @@ module.exports = gql`
       deleteSupplierItem(id: ID!): SupplierItemResponse
 
       #Supplier Item Processing
-      createItemProcessing(input: ItemProcessingInput): SupplierItemProcessingResponse
-      updateItemProcessing(id:ID!, input:ItemProcessingInput):SupplierItemProcessingResponse
+      createItemProcessing(input: SupplierItemProcessingInput): SupplierItemProcessingResponse
+      updateItemProcessing(id:ID!, input:SupplierItemProcessingInput):SupplierItemProcessingResponse
       deleteItemProcessing(id: ID!):SupplierItemProcessingResponse
 
       #Supplier Item Processing sachets
-      createSachetItem(input: SachetProcessingInput): SupplierItemProcessingSachetsResponse
-      updateSachetItem(id:ID!,input:SachetProcessingInput):SupplierItemProcessingSachetsResponse
+      createSachetItem(input: SupplierItemProcessingSachetsInput): SupplierItemProcessingSachetsResponse
+      updateSachetItem(id:ID!,input:SupplierItemProcessingSachetsInput):SupplierItemProcessingSachetsResponse
       deleteSachetItem(id: ID!):SupplierItemProcessingSachetsResponse
    }
 `

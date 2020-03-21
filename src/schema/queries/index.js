@@ -8,7 +8,7 @@ module.exports = gql`
       getPurchaseOrders():[PurchaseOrder]
       getOrderedItem(supplierId:ID!,orderedItemId:ID!):PurchaseOrder
       
-      getSupplierItemProcessingSachet(id: ID!): SupplierItemProcessingSachet
+      getSupplierItemProcessingSachet(id: ID!): SupplierItemProcessingSachets
 
       getSupplierItemProcessing(id: ID!): SupplierItemProcessing
 
