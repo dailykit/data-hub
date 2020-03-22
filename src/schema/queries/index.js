@@ -1,22 +1,9 @@
-const { gql } = require('apollo-server-express')
+import { gql } from 'apollo-server-express'
 
-module.exports = gql`
+const typeDefs = gql`
    type Query {
       recipes: [Recipe]
-
-      getPurchaseOrder(supplierId: ID!): PurchaseOrder
-      getPurchaseOrders: [PurchaseOrder]
-
-      getSupplierItemProcessingSachet(id: ID!): SupplierItemProcessingSachets
-
-      getSupplierItem(id: ID!): SupplierItem
-
-      getSupplier(id: ID!): Supplier
-      getSuppliers: [Supplier]
-
-      getWorkOrder(id: ID!): WorkOrder
-      getInventories: [WorkOrder]!
-
-      getOrderedItem(supplierId: ID!, supplierItemId: ID!): [OrderedItems]
    }
 `
+
+export default typeDefs

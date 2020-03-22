@@ -1,3 +1,3 @@
-const Recipe = require('./recipe')
+import Recipe from './recipe'
 
-module.exports = { Recipe }
+export { Recipe }
