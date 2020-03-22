@@ -1,1 +1,3 @@
-export * from './recipe'
+import Recipe from './recipe'
+
+export { Recipe }
