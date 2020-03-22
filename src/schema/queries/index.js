@@ -5,20 +5,18 @@ module.exports = gql`
       recipes: [Recipe]
 
       getPurchaseOrder(supplierId: ID!): PurchaseOrder
-      getPurchaseOrders():[PurchaseOrder]
-      
-      getSupplierItemProcessingSachet(id: ID!): SupplierItemProcessingSachet
+      getPurchaseOrders: [PurchaseOrder]
 
-      getSupplierItemProcessing(id: ID!): SupplierItemProcessing
+      getSupplierItemProcessingSachet(id: ID!): SupplierItemProcessingSachets
 
-      getSupplierItem(id: ID!): SupplierItem  
-      
+      getSupplierItem(id: ID!): SupplierItem
+
       getSupplier(id: ID!): Supplier
-      getSuppliers:[Supplier]
-      
-      getWorkOrder(id: ID!): WorkOrder
-      getInventories:[WorkOrder]!
+      getSuppliers: [Supplier]
 
-      getOrderedItem(supplierId: ID! , supplierItemId: ID!):[OrderedItems]
+      getWorkOrder(id: ID!): WorkOrder
+      getInventories: [WorkOrder]!
+
+      getOrderedItem(supplierId: ID!, supplierItemId: ID!): [OrderedItems]
    }
 `

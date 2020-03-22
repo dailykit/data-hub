@@ -20,35 +20,35 @@ module.exports = gql`
    }
 
    #Purchase order
-   type PurchaseOrderResponse implements MutationResponse{
+   type PurchaseOrderResponse implements MutationResponse {
       success: Boolean!
       message: String!
       purchaseOrder: PurchaseOrder
    }
 
    #Work Order
-   type WorkOrderResponse implements MutationResponse{
+   type WorkOrderResponse implements MutationResponse {
       success: Boolean!
       message: String!
       workOrder: WorkOrder
    }
 
    #Supplier Item
-   type SupplierItemResponse implements MutationResponse{
+   type SupplierItemResponse implements MutationResponse {
       success: Boolean!
       message: String!
       supplierItem: SupplierItem
    }
-   
+
    #Supplier Item Processing
-   type SupplierItemProcessingResponse implements MutationResponse{
+   type SupplierItemProcessingResponse implements MutationResponse {
       success: Boolean!
       message: String!
       supplierItemProcessing: SupplierItemProcessing
    }
 
    #Supplier Item Processing Sachets
-   type SupplierItemProcessingSachetsResponse implements MutationResponse{
+   type SupplierItemProcessingSachetsResponse implements MutationResponse {
       success: Boolean!
       message: String!
       supplierItemProcessingSachets: SupplierItemProcessingSachets
@@ -58,32 +58,48 @@ module.exports = gql`
 
       #Supplier
       createSupplier(input: SupplierInput): SupplierResponse
-      updateSupplier(id:ID!,input:SupplierInput):SupplierResponse
+      updateSupplier(id: ID!, input: SupplierInput): SupplierResponse
       deleteSupplier(id: ID!): SupplierResponse
 
       #Purchase Order
-      createPurchaseOrder( input: PurchaseOrderInput ): PurchaseOrderResponse
-      updatePurchaseOrder(id:ID!,input: PurchaseOrderInput): PurchaseOrderResponse
+      createPurchaseOrder(input: PurchaseOrderInput): PurchaseOrderResponse
+      updatePurchaseOrder(
+         id: ID!
+         input: PurchaseOrderInput
+      ): PurchaseOrderResponse
       deletePurchaseOrder(id: ID!): PurchaseOrderResponse
 
       #Work order
-      createWorkOrder( input: WorkOrderInput ): WorkOrderResponse
-      updateWorkOrder(id: ID!,input:WorkOrderInput): WorkOrderResponse
+      createWorkOrder(input: WorkOrderInput): WorkOrderResponse
+      updateWorkOrder(id: ID!, input: WorkOrderInput): WorkOrderResponse
       deleteWorkOrder(id: ID!): WorkOrderResponse
 
       #Supplier Item
-      createSupplierItem( input: SupplierItemInput ): SupplierItemResponse
-      updateSupplierItem(id: ID!,input:SupplierItemInput): SupplierItemResponse
+      createSupplierItem(input: SupplierItemInput): SupplierItemResponse
+      updateSupplierItem(
+         id: ID!
+         input: SupplierItemInput
+      ): SupplierItemResponse
       deleteSupplierItem(id: ID!): SupplierItemResponse
 
       #Supplier Item Processing
-      createItemProcessing(input: ItemProcessingInput): SupplierItemProcessingResponse
-      updateItemProcessing(id:ID!, input:ItemProcessingInput):SupplierItemProcessingResponse
-      deleteItemProcessing(id: ID!):SupplierItemProcessingResponse
+      createItemProcessing(
+         input: SupplierItemProcessingInput
+      ): SupplierItemProcessingResponse
+      updateItemProcessing(
+         id: ID!
+         input: SupplierItemProcessingInput
+      ): SupplierItemProcessingResponse
+      deleteItemProcessing(id: ID!): SupplierItemProcessingResponse
 
       #Supplier Item Processing sachets
-      createSachetItem(input: SachetProcessingInput): SupplierItemProcessingSachetsResponse
-      updateSachetItem(id:ID!,input:SachetProcessingInput):SupplierItemProcessingSachetsResponse
-      deleteSachetItem(id: ID!):SupplierItemProcessingSachetsResponse
+      createSachetItem(
+         input: SupplierItemProcessingSachetsInput
+      ): SupplierItemProcessingSachetsResponse
+      updateSachetItem(
+         id: ID!
+         input: SupplierItemProcessingSachetsInput
+      ): SupplierItemProcessingSachetsResponse
+      deleteSachetItem(id: ID!): SupplierItemProcessingSachetsResponse
    }
 `
