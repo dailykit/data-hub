@@ -36,7 +36,7 @@ module.exports = gql`
       nutritions: Nutritions
    }
 
-   type Ingredient {
+   type IngredientItem {
       processing: Processing
       quantity: [String]!
    }
@@ -69,7 +69,7 @@ module.exports = gql`
       tags: [String]!
       type: Type
       servings: [Serving]
-      ingredients: [Ingredient]!
+      ingredients: [IngredientItem]!
       # The current procedure field design won't work with this schema
       process: [Step]!
    }
