@@ -2,8 +2,8 @@ module.exports = {
    Query: {
       ingredients: async (parent, args, { models }) => {
          try {
-            const { Recipe } = models
-            const ingredients = await Recipe.find({})
+            const { Ingredient } = models
+            const ingredients = await Ingredient.find({})
             return ingredients
          } catch (error) {
             return error.message
@@ -18,6 +18,5 @@ module.exports = {
             return error.message
          }
       }
-   },
-   Mutation: {}
+   }
 }

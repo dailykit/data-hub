@@ -12,8 +12,16 @@ const typeDefs = gql`
       recipe: Recipe
    }
 
+   type CollectionResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      collection: Collection
+   }
+
    type Mutation {
       createRecipe(id: ID!): RecipeResponse
+
+      createCollection(lunch: [String], dinner: [String]): CollectionResponse
    }
 `
 

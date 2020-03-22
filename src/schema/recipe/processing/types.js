@@ -1,9 +1,9 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
-   type Ingredient {
+   type Processing {
       name: String
-      processings: [Processing]!
+      sachets: [Sachet]!
    }
 `
 

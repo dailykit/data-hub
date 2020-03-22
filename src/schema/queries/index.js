@@ -7,6 +7,15 @@ const typeDefs = gql`
 
       ingredients: [Ingredient]!
       ingredient(id: ID!): Ingredient
+
+      collections: [Collection]!
+      collection(id: ID!): Collection
+
+      processings: [Processing]!
+      processing(id: ID!): Processing
+
+      sachets: [Sachet]!
+      sachet(id: ID!): Sachet
    }
 `
 
