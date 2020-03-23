@@ -6,7 +6,7 @@ const IngredientSchema = new mongoose.Schema(
       processings: [
          {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Processing'
+            ref: 'IngredientProcessing'
          }
       ]
    },

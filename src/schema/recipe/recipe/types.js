@@ -4,16 +4,28 @@ const typeDefs = gql`
    type Recipe {
       name: String
       type: String
-      cookingProcess: [Step]!
+      servings: [Serving]!
+      procedures: [Procedure]!
+      allergens: [Allergen]!
+   }
+   type Serving {
+      size: Int
       ingredients: [IngredientItem]
    }
    type IngredientItem {
-      sachet: Sachet
       ingredient: Ingredient
-      processing: Processing
+      processing: IngredientProcessing
+      sachet: Sachet
+   }
+   type Procedure {
+      name: String
+      steps: [Step]
    }
    type Step {
+      title: String
       description: String
+      images: [String]!
+      videos: [String]!
    }
 `
 

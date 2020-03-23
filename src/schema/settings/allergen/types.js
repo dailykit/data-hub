@@ -1,9 +1,8 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
-   type Ingredient {
+   type Allergen {
       name: String
-      processings: [IngredientProcessing]!
    }
 `
 

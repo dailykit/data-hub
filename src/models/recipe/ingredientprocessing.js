@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
-const ProcessingSchema = new mongoose.Schema(
+const IngredientProcessingSchema = new mongoose.Schema(
    {
-      name: {
+      processingName: {
          type: mongoose.Schema.Types.ObjectId,
          ref: 'ProcessingName'
       },
@@ -18,4 +18,7 @@ const ProcessingSchema = new mongoose.Schema(
    }
 )
 
-export default mongoose.model('Processing', ProcessingSchema)
+export default mongoose.model(
+   'IngredientProcessing',
+   IngredientProcessingSchema
+)

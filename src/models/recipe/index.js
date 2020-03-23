@@ -1,6 +1,6 @@
 import Recipe from './recipe'
 import Ingredient from './ingredient'
 import Sachet from './sachet'
-import Processing from './processing'
+import IngredientProcessing from './ingredientprocessing'
 
-export { Recipe, Ingredient, Processing, Sachet }
+export { Recipe, Ingredient, IngredientProcessing, Sachet }

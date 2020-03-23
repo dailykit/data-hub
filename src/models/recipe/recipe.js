@@ -5,25 +5,50 @@ const RecipeSchema = new Schema(
    {
       name: String,
       type: String,
-      ingredients: [
+      allergens: [
          {
-            ingredient: {
-               type: mongoose.Schema.Types.ObjectId,
-               ref: 'Ingredient'
-            },
-            processing: {
-               type: mongoose.Schema.Types.ObjectId,
-               ref: 'Processing'
-            },
-            sachet: {
-               type: mongoose.Schema.Types.ObjectId,
-               ref: 'Sachet'
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Allergen'
          }
       ],
-      cookingProcess: [
+      servings: [
          {
-            description: String
+            size: Number,
+            ingredients: [
+               {
+                  ingredient: {
+                     type: mongoose.Schema.Types.ObjectId,
+                     ref: 'Ingredient'
+                  },
+                  processing: {
+                     type: mongoose.Schema.Types.ObjectId,
+                     ref: 'IngredientProcessing'
+                  },
+                  sachet: {
+                     type: mongoose.Schema.Types.ObjectId,
+                     ref: 'Sachet'
+                  }
+               }
+            ]
+         }
+      ],
+      procedures: [
+         {
+            name: String,
+            steps: [
+               {
+                  title: String,
+                  description: String,
+                  images: {
+                     type: [String],
+                     default: []
+                  },
+                  videos: {
+                     type: [String],
+                     default: []
+                  }
+               }
+            ]
          }
       ]
    },

@@ -1,9 +1,10 @@
 const merge = require('lodash.merge')
 const { makeExecutableSchema } = require('graphql-tools')
 
-import { Recipe, Ingredient, Processing, Sachet } from './recipe'
-import Collection from './collection'
+import { Recipe, Ingredient, IngredientProcessing, Sachet } from './recipe'
+import { Collection, Product, Menu } from './shop'
 import { SupplierItem } from './inventory'
+import { ProcessingName, Allergen } from './settings'
 
 import Queries from './queries'
 import Mutations from './mutations'
@@ -15,18 +16,26 @@ module.exports = makeExecutableSchema({
       Mutations,
       Recipe.types,
       Ingredient.types,
-      Processing.types,
+      IngredientProcessing.types,
       Sachet.types,
       Collection.types,
-      SupplierItem.types
+      Product.types,
+      Menu.types,
+      SupplierItem.types,
+      ProcessingName.types,
+      Allergen.types
    ],
    resolvers: merge(
       ResponseResolvers,
       Recipe.resolvers,
       Ingredient.resolvers,
-      Processing.resolvers,
+      IngredientProcessing.resolvers,
       Sachet.resolvers,
       Collection.resolvers,
-      SupplierItem.resolvers
+      Product.resolvers,
+      Menu.resolvers,
+      SupplierItem.resolvers,
+      ProcessingName.resolvers,
+      Allergen.resolvers
    )
 })

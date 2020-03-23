@@ -8,11 +8,23 @@ const typeDefs = gql`
       ingredients: [Ingredient]!
       ingredient(id: ID!): Ingredient
 
-      collections: [Collection]!
-      collection(id: ID!): Collection
+      menucollections: [MenuCollection]!
+      menucollection(id: ID!): MenuCollection
 
-      processings: [Processing]!
-      processing(id: ID!): Processing
+      products: [Product]!
+      product(id: ID!): Product
+
+      menus: [Menu]!
+      menu(id: ID!): Menu
+
+      processings: [IngredientProcessing]!
+      processing(id: ID!): IngredientProcessing
+
+      processingNames: [ProcessingName]!
+      processingName(id: ID!): ProcessingName
+
+      allergens: [Allergen]!
+      allergen(id: ID!): Allergen
 
       sachets: [Sachet]!
       sachet(id: ID!): Sachet
