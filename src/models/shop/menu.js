@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const menuSchema = new Schema(
    {
       name: String,
+      zip_codes: [String],
       menuCollections: [
          {
             menuCollection: {
