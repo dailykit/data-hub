@@ -7,42 +7,11 @@ const menuSchema = new Schema(
       zip_codes: [String],
       menuCollections: [
          {
+            availability: [String],
             menuCollection: {
                type: Schema.Types.ObjectId,
                ref: 'MenuCollection'
-            },
-            availability: [String]
-            //    availabilty: {
-            //       includeRange: [
-            //          {
-            //             recurring: [
-            //                {
-            //                   startDate: Date,
-            //                   endDate: Date,
-            //                   day: [String],
-            //                   startTime: Date,
-            //                   endTime: Date
-            //                }
-            //             ],
-            //             customRange: [
-            //                {
-            //                   startDay: Date,
-            //                   endDay: Date,
-            //                   startTime: Date,
-            //                   endTime: Date
-            //                }
-            //             ]
-            //          }
-            //       ],
-            //       excludeRange: [
-            //          {
-            //             startDay: Date,
-            //             endDay: Date,
-            //             startTime: Date,
-            //             endTime: Date
-            //          }
-            //       ]
-            //    }
+            }
          }
       ]
    },

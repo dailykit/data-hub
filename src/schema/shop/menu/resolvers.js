@@ -20,10 +20,10 @@ module.exports = {
             return error.message
          }
       },
-      menu: async (parent, { id }, { models }) => {
+      menu: async (parent, args, { models }) => {
          try {
             const { Menu } = models
-            const menu = await Menu.find(id)
+            const menu = await Menu.findOne(args)
             return menu
          } catch (error) {
             return error.message

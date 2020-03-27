@@ -39,14 +39,8 @@ const RecipeSchema = new Schema(
                {
                   title: String,
                   description: String,
-                  images: {
-                     type: [String],
-                     default: []
-                  },
-                  videos: {
-                     type: [String],
-                     default: []
-                  }
+                  images: [String],
+                  videos: [String]
                }
             ]
          }
