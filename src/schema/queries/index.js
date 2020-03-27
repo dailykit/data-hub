@@ -15,7 +15,7 @@ const typeDefs = gql`
       product(id: ID!): Product
 
       menus: [Menu]!
-      menu(id: ID!): Menu
+      menu(id: ID, name: String): Menu
 
       processings: [IngredientProcessing]!
       processing(id: ID!): IngredientProcessing
@@ -28,6 +28,8 @@ const typeDefs = gql`
 
       sachets: [Sachet]!
       sachet(id: ID!): Sachet
+
+      brand: Brand
    }
 `
 

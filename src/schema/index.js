@@ -5,6 +5,7 @@ import { Recipe, Ingredient, IngredientProcessing, Sachet } from './recipe'
 import { Collection, Product, Menu } from './shop'
 import { SupplierItem } from './inventory'
 import { ProcessingName, Allergen } from './settings'
+import Brand from './brand'
 
 import Queries from './queries'
 import Mutations from './mutations'
@@ -23,7 +24,8 @@ module.exports = makeExecutableSchema({
       Menu.types,
       SupplierItem.types,
       ProcessingName.types,
-      Allergen.types
+      Allergen.types,
+      Brand.types
    ],
    resolvers: merge(
       ResponseResolvers,
@@ -36,6 +38,7 @@ module.exports = makeExecutableSchema({
       Menu.resolvers,
       SupplierItem.resolvers,
       ProcessingName.resolvers,
-      Allergen.resolvers
+      Allergen.resolvers,
+      Brand.resolvers
    )
 })
