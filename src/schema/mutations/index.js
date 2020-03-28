@@ -18,6 +18,12 @@ const typeDefs = gql`
       ID: ID
    }
 
+   type SachetResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      ID: ID
+   }
+
    type Mutation {
       createRecipe(name: String): RecipeResponse
 
@@ -29,9 +35,21 @@ const typeDefs = gql`
 
       deleteProcessing(input: DeleteProcessingInput): ProcessingResponse
 
-      createProcessingName(name: String): ProcessingName
+      createSachet(input: CreateSachetInput): [Sachet]
 
-      createSupplierItem(name: String): SupplierItem
+      deleteSachet(input: DeleteSachetInput): SachetResponse
+
+      createProcessingName(title: String): ProcessingName
+
+      createSupplierItem(title: String): SupplierItem
+
+      createUnit(title: String): Unit
+
+      createStation(title: String): Station
+
+      createPackaging(title: String): Packaging
+
+      createLabelTemplate(title: String): LabelTemplate
    }
 `
 

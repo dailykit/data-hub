@@ -63,9 +63,9 @@ module.exports = {
    Mutation: {
       createProcessings: async (_, { input }, { models }) => {
          try {
-            const { Processing, Ingredient } = models
+            const { IngredientProcessing, Ingredient } = models
             const processings = await input.processingNames.map(name => {
-               const processing = new Processing({
+               const processing = new IngredientProcessing({
                   name
                   // sachets: []
                })
@@ -97,9 +97,9 @@ module.exports = {
       },
       deleteProcessing: async (_, { input }, { models }) => {
          try {
-            const { Processing, Ingredient } = models
+            const { IngredientProcessing, Ingredient } = models
             // This will be done using pre hook later
-            const processing = await Processing.findOne({
+            const processing = await IngredientProcessing.findOne({
                _id: input.processingId
             })
             await Sachet.deleteMany({

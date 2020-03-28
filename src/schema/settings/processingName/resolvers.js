@@ -20,11 +20,11 @@ module.exports = {
       }
    },
    Mutation: {
-      createProcessingName: (_, { processingNameID }, { models }) => {
+      createProcessingName: (_, { title }, { models }) => {
          try {
             const { ProcessingName } = models
             const response = ProcessingName.create({
-               processingName: processingNameID
+               title
             })
             return response
          } catch (error) {

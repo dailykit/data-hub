@@ -1,10 +1,10 @@
 module.exports = {
    Query: {},
    Mutation: {
-      createSupplierItem: (_, { name }, { models }) => {
+      createSupplierItem: (_, { title }, { models }) => {
          try {
             const { SupplierItem } = models
-            const response = SupplierItem.create({ name })
+            const response = SupplierItem.create({ title })
             return response
          } catch (error) {
             return error.message
