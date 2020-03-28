@@ -25,7 +25,7 @@ module.exports = {
       ingredient: async (parent, { id }, { models }) => {
          try {
             const { Ingredient } = models
-            const ingredient = await Ingredient.find(id)
+            const ingredient = await Ingredient.findOne({ _id: id })
             return ingredient
          } catch (error) {
             return error.message
@@ -33,13 +33,33 @@ module.exports = {
       }
    },
    Mutation: {
-      createIngredient: (_, { name }, { models }) => {
+      createIngredient: async (_, { name }, { models }) => {
          try {
             const { Ingredient } = models
-            const response = Ingredient.create({ name })
+            const response = await Ingredient.create({ name })
             return response
          } catch (error) {
             return error.message
+         }
+      },
+      updateIngredient: async (_, { input }, { models }) => {
+         try {
+            const { Ingredient } = models
+            const ingredient = await Ingredient.findByIdAndUpdate(
+               { _id: input.ingredientId },
+               {
+                  $set: {
+                     name: input.name,
+                     image: input.image
+                  }
+               },
+               {
+                  new: true
+               }
+            )
+            return ingredient
+         } catch (err) {
+            throw err
          }
       }
    }

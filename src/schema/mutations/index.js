@@ -17,6 +17,8 @@ const typeDefs = gql`
 
       createIngredient(name: String): Ingredient
 
+      updateIngredient(input: UpdateIngredientInput): Ingredient
+
       createProcessing(processingNameId: ID): IngredientProcessing
 
       createProcessingName(name: String): ProcessingName
