@@ -15,13 +15,13 @@ const typeDefs = gql`
    type ProcessingResponse implements MutationResponse {
       success: Boolean!
       message: String!
-      ID: ID
+      id: ID
    }
 
    type SachetResponse implements MutationResponse {
       success: Boolean!
       message: String!
-      ID: ID
+      id: ID
    }
 
    type Mutation {
@@ -35,7 +35,7 @@ const typeDefs = gql`
 
       deleteProcessing(input: DeleteProcessingInput): ProcessingResponse
 
-      createSachet(input: CreateSachetInput): [Sachet]
+      createSachet(input: CreateSachetInput): Sachet
 
       deleteSachet(input: DeleteSachetInput): SachetResponse
 

@@ -33,7 +33,7 @@ const typeDefs = gql`
       # allergens: [Allergens]!
    }
    type SupplierItem {
-      _id: ID
+      id: ID
       title: String
       sku: String
       unit_quantity: Quantity

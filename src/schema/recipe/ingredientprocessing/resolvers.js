@@ -1,28 +1,36 @@
 module.exports = {
    IngredientProcessing: {
-      // This was throwing some error
-      // processingName: async (parent, _, { models }) => {
-      //    try {
-      //       const { ProcessingName } = models
-      //       const processingName = await ProcessingName.findOne(
-      //          parent.processingName
-      //       )
-      //       return processingName
-      //    } catch (error) {
-      //       return error.message
-      //    }
-      // },
-      // sachets: async (parent, _, { models }) => {
-      //    try {
-      //       const { Sachet } = models
-      //       const sachets = await parent.sachets.map(sachet =>
-      //          Sachet.findOne(sachet)
-      //       )
-      //       return sachets
-      //    } catch (error) {
-      //       return error.message
-      //    }
-      // }
+      name: async (parent, _, { models }) => {
+         try {
+            const { ProcessingName } = models
+            const processingName = await ProcessingName.findOne(parent.name)
+            return processingName
+         } catch (error) {
+            return error.message
+         }
+      },
+      sachets: async (parent, _, { models }) => {
+         try {
+            const { Sachet } = models
+            const sachets = await parent.sachets.map(sachet =>
+               Sachet.findOne(sachet)
+            )
+            return sachets
+         } catch (error) {
+            return error.message
+         }
+      },
+      recipes: async (parent, _, { models }) => {
+         try {
+            const { Recipe } = models
+            const recipes = await parent.recipes.map(recipe =>
+               Recipe.findOne(recipe)
+            )
+            return recipes
+         } catch (error) {
+            return error.message
+         }
+      }
    },
    Query: {
       processings: async (parent, args, { models }) => {
@@ -42,22 +50,6 @@ module.exports = {
          } catch (error) {
             return error.message
          }
-      },
-      processingsOfIngredient: async (parent, { id }, { models }) => {
-         try {
-            const { Ingredient } = models
-            const ingredient = await Ingredient.findOne({
-               _id: id
-            }).populate({
-               path: 'processings',
-               populate: {
-                  path: 'name'
-               }
-            })
-            return ingredient.processings
-         } catch (error) {
-            return error.message
-         }
       }
    },
    Mutation: {
@@ -69,9 +61,9 @@ module.exports = {
                   name
                })
                processing.save()
-               return processing._id
+               return processing
             })
-            const ingredient = await Ingredient.findOneAndUpdate(
+            await Ingredient.findOneAndUpdate(
                {
                   _id: input.ingredientId
                },
@@ -83,13 +75,8 @@ module.exports = {
                {
                   new: true
                }
-            ).populate({
-               path: 'processings',
-               populate: {
-                  path: 'name'
-               }
-            })
-            return ingredient.processings
+            )
+            return processings
          } catch (error) {
             return error.message
          }
@@ -119,7 +106,7 @@ module.exports = {
                success: true,
                message: 'Processing deleted!',
                // return id from deleted obj, later
-               ID: input.processingId
+               id: input.processingId
             }
          } catch (error) {
             throw error.message

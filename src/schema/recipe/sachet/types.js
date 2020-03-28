@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
    type Sachet {
-      _id: ID
+      id: ID
       isValid: Boolean
       quantity: Quantity
       tracking: Boolean

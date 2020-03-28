@@ -1,22 +1,33 @@
 module.exports = {
-   // Ingredient: {
-   //    processings: async (parent, _, { models }) => {
-   //       try {
-   //          const { IngredientProcessing } = models
-   //          const processings = await parent.processings.map(sachet =>
-   //             IngredientProcessing.find(sachet)
-   //          )
-   //          return processings
-   //       } catch (error) {
-   //          return error.message
-   //       }
-   //    }
-   // },
+   Ingredient: {
+      processings: async (parent, _, { models }) => {
+         try {
+            const { IngredientProcessing } = models
+            const processings = await parent.processings.map(processing =>
+               IngredientProcessing.findOne({ _id: processing })
+            )
+            return processings
+         } catch (error) {
+            return error.message
+         }
+      },
+      sachets: async (parent, _, { models }) => {
+         try {
+            const { Sachet } = models
+            const sachets = await parent.sachets.map(sachet =>
+               Sachet.findOne(sachet)
+            )
+            return sachets
+         } catch (error) {
+            return error.message
+         }
+      }
+   },
    Query: {
       ingredients: async (parent, args, { models }) => {
          try {
             const { Ingredient } = models
-            const ingredients = await Ingredient.find({})
+            const ingredients = await Ingredient.find()
             return ingredients
          } catch (error) {
             return error.message
@@ -46,7 +57,7 @@ module.exports = {
          try {
             const { Ingredient } = models
             const ingredient = await Ingredient.findByIdAndUpdate(
-               { _id: input.ingredientId },
+               { _id: input.id },
                {
                   $set: {
                      name: input.name,

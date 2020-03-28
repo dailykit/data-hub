@@ -1,6 +1,57 @@
 module.exports = {
+   Quantity: {
+      unit: async (parent, _, { models }) => {
+         try {
+            const { Unit } = models
+            const unit = await Unit.findOne(parent.unit)
+            return unit
+         } catch (error) {
+            return error.message
+         }
+      }
+   },
+   Mode: {
+      station: async (parent, _, { models }) => {
+         try {
+            const { Station } = models
+            const station = await Station.findOne(parent.station)
+            return station
+         } catch (error) {
+            return error.message
+         }
+      }
+   },
+   SachetItem: {
+      item: async (parent, _, { models }) => {
+         try {
+            const { SupplierItem } = models
+            const item = await SupplierItem.findOne(parent.item)
+            return item
+         } catch (error) {
+            return error.message
+         }
+      },
+      packaging: async (parent, _, { models }) => {
+         try {
+            const { Packaging } = models
+            const packaging = await Packaging.findOne(parent.packaging)
+            return packaging
+         } catch (error) {
+            return error.message
+         }
+      },
+      labelTemplate: async (parent, _, { models }) => {
+         try {
+            const { LabelTemplate } = models
+            const template = await LabelTemplate.findOne(parent.labelTemplate)
+            return template
+         } catch (error) {
+            return error.message
+         }
+      }
+   },
    Query: {
-      sachets: async (parent, args, { models }) => {
+      sachets: async (_, __, { models }) => {
          try {
             const { Sachet } = models
             const sachets = await Sachet.find({})
@@ -9,41 +60,11 @@ module.exports = {
             return error.message
          }
       },
-      sachet: async (parent, { id }, { models }) => {
+      sachet: async (_, { id }, { models }) => {
          try {
             const { Sachet } = models
-            const sachet = await Sachet.find(id)
+            const sachet = await Sachet.findOne({ _id: id })
             return sachet
-         } catch (error) {
-            return error.message
-         }
-      },
-      sachetsOfProcessing: async (parent, { id }, { models }) => {
-         try {
-            const { IngredientProcessing } = models
-            const processing = await IngredientProcessing.findOne({
-               _id: id
-            }).populate({
-               path: 'sachets',
-               populate: [
-                  {
-                     path: 'quantity.unit'
-                  },
-                  {
-                     path: 'modes.station'
-                  },
-                  {
-                     path: 'modes.supplierItems.item'
-                  },
-                  {
-                     path: 'modes.supplierItems.packaging'
-                  },
-                  {
-                     path: 'modes.supplierItems.labelTemplate'
-                  }
-               ]
-            })
-            return processing.sachets
          } catch (error) {
             return error.message
          }
@@ -54,7 +75,7 @@ module.exports = {
          try {
             const { Ingredient, IngredientProcessing, Sachet } = models
             const sachet = await Sachet.create(input.sachet)
-            const processing = await IngredientProcessing.findOneAndUpdate(
+            await IngredientProcessing.findOneAndUpdate(
                {
                   _id: input.processingId
                },
@@ -66,26 +87,7 @@ module.exports = {
                {
                   new: true
                }
-            ).populate({
-               path: 'sachets',
-               populate: [
-                  {
-                     path: 'quantity.unit'
-                  },
-                  {
-                     path: 'modes.station'
-                  },
-                  {
-                     path: 'modes.supplierItems.item'
-                  },
-                  {
-                     path: 'modes.supplierItems.packaging'
-                  },
-                  {
-                     path: 'modes.supplierItems.labelTemplate'
-                  }
-               ]
-            })
+            )
             await Ingredient.findOneAndUpdate(
                {
                   _id: input.ingredientId
@@ -96,13 +98,14 @@ module.exports = {
                   }
                }
             )
-            return processing.sachets
+            return sachet
          } catch (error) {
             return error.message
          }
       },
       deleteSachet: async (_, { input }, { models }) => {
          try {
+            console.log(input)
             const { Ingredient, IngredientProcessing, Sachet } = models
             await Sachet.findOneAndDelete({ _id: input.sachetId })
             await Ingredient.findOneAndUpdate(
@@ -124,7 +127,7 @@ module.exports = {
             return {
                success: true,
                message: 'Sachet removed!',
-               ID: input.sachetId
+               id: input.sachetId
             }
          } catch (error) {
             return error.message

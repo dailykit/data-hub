@@ -2,17 +2,17 @@ const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
    type Ingredient {
-      _id: ID!
+      id: ID!
       isValid: Boolean!
       isPublished: Boolean!
       name: String!
       image: String
-      processings: [ID!]!
-      sachets: [ID!]!
+      processings: [IngredientProcessing!]!
+      sachets: [Sachet!]!
    }
 
    input UpdateIngredientInput {
-      ingredientId: ID!
+      id: ID!
       name: String!
       image: String
    }

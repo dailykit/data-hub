@@ -2,11 +2,11 @@ const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
    type IngredientProcessing {
-      _id: ID
+      id: ID
       isValid: Boolean
       name: ProcessingName
-      sachets: [ID]
-      recipes: [ID]
+      sachets: [Sachet]
+      recipes: [Recipe]
    }
 
    input DeleteProcessingInput {
