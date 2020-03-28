@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const SupplierItemSchema = new mongoose.Schema(
    {
-      name: String,
+      title: String,
       sku: String,
       unit_quantity: {
          min: 0,

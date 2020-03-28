@@ -1,17 +1,17 @@
 module.exports = {
-   Ingredient: {
-      processings: async (parent, _, { models }) => {
-         try {
-            const { IngredientProcessing } = models
-            const processings = await parent.processings.map(sachet =>
-               IngredientProcessing.find(sachet)
-            )
-            return processings
-         } catch (error) {
-            return error.message
-         }
-      }
-   },
+   // Ingredient: {
+   //    processings: async (parent, _, { models }) => {
+   //       try {
+   //          const { IngredientProcessing } = models
+   //          const processings = await parent.processings.map(sachet =>
+   //             IngredientProcessing.find(sachet)
+   //          )
+   //          return processings
+   //       } catch (error) {
+   //          return error.message
+   //       }
+   //    }
+   // },
    Query: {
       ingredients: async (parent, args, { models }) => {
          try {

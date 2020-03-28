@@ -19,7 +19,7 @@ const typeDefs = gql`
 
       processings: [IngredientProcessing]!
       processing(id: ID!): IngredientProcessing
-      processingsOfIngredient(id: ID!): IngredientProcessing
+      processingsOfIngredient(id: ID!): [IngredientProcessing]!
 
       processingNames: [ProcessingName]!
       processingName(id: ID!): ProcessingName
@@ -32,6 +32,9 @@ const typeDefs = gql`
 
       stations: [Station]!
       station(id: ID!): Station
+
+      supplierItems: [SupplierItem]!
+      supplierItem(id: ID!): SupplierItem
 
       packagings: [Packaging]!
       packaging(id: ID): Packaging

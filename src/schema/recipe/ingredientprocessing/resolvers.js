@@ -12,17 +12,17 @@ module.exports = {
       //       return error.message
       //    }
       // },
-      sachets: async (parent, _, { models }) => {
-         try {
-            const { Sachet } = models
-            const sachets = await parent.sachets.map(sachet =>
-               Sachet.findOne(sachet)
-            )
-            return sachets
-         } catch (error) {
-            return error.message
-         }
-      }
+      // sachets: async (parent, _, { models }) => {
+      //    try {
+      //       const { Sachet } = models
+      //       const sachets = await parent.sachets.map(sachet =>
+      //          Sachet.findOne(sachet)
+      //       )
+      //       return sachets
+      //    } catch (error) {
+      //       return error.message
+      //    }
+      // }
    },
    Query: {
       processings: async (parent, args, { models }) => {
@@ -67,7 +67,6 @@ module.exports = {
             const processings = await input.processingNames.map(name => {
                const processing = new IngredientProcessing({
                   name
-                  // sachets: []
                })
                processing.save()
                return processing._id
@@ -97,7 +96,7 @@ module.exports = {
       },
       deleteProcessing: async (_, { input }, { models }) => {
          try {
-            const { IngredientProcessing, Ingredient } = models
+            const { IngredientProcessing, Ingredient, Sachet } = models
             // This will be done using pre hook later
             const processing = await IngredientProcessing.findOne({
                _id: input.processingId
