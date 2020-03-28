@@ -2,7 +2,8 @@ const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
    type ProcessingName {
-      name: String
+      _id: ID!
+      title: String!
    }
 `
 

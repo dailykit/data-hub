@@ -12,6 +12,12 @@ const typeDefs = gql`
       recipe: Recipe
    }
 
+   type ProcessingResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      ID: ID
+   }
+
    type Mutation {
       createRecipe(name: String): RecipeResponse
 
@@ -19,7 +25,9 @@ const typeDefs = gql`
 
       updateIngredient(input: UpdateIngredientInput): Ingredient
 
-      createProcessing(processingNameId: ID): IngredientProcessing
+      createProcessings(input: CreateProcessingsInput): [IngredientProcessing]
+
+      deleteProcessing(input: DeleteProcessingInput): ProcessingResponse
 
       createProcessingName(name: String): ProcessingName
 

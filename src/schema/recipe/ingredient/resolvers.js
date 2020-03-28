@@ -58,8 +58,8 @@ module.exports = {
                }
             )
             return ingredient
-         } catch (err) {
-            throw err
+         } catch (error) {
+            return error.message
          }
       }
    }
