@@ -1,11 +1,15 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
-const processingNameSchema = new Schema(
+const ProcessingName = new mongoose.Schema(
    {
-      name: String
+      title: {
+         type: String,
+         unique: ['Processing type cannot be duplicated.']
+      }
    },
-   { timestamps: true }
+   {
+      timestamps: true
+   }
 )
 
-module.exports = mongoose.model('processingName', processingNameSchema)
+module.exports = mongoose.model('ProcessingName', ProcessingName)
