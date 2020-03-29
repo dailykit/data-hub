@@ -10,7 +10,7 @@ const app = express()
 const isProd = process.env.NODE_ENV === 'production' || false
 
 mongoose
-   .connect('mongodb://localhost:27017/datahub', {
+   .connect(process.env.DB_URI, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true
