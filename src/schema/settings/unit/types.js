@@ -1,9 +1,9 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
-   type Allergen {
+   type Unit {
       id: ID!
-      name: String
+      title: String!
    }
 `
 

@@ -4,7 +4,14 @@ const { makeExecutableSchema } = require('graphql-tools')
 import { Recipe, Ingredient, IngredientProcessing, Sachet } from './recipe'
 import { Collection, Product, Menu } from './shop'
 import { SupplierItem } from './inventory'
-import { ProcessingName, Allergen } from './settings'
+import {
+   ProcessingName,
+   Allergen,
+   Unit,
+   Station,
+   Packaging,
+   LabelTemplate
+} from './settings'
 import Brand from './brand'
 
 import Queries from './queries'
@@ -24,6 +31,10 @@ module.exports = makeExecutableSchema({
       Menu.types,
       SupplierItem.types,
       ProcessingName.types,
+      Unit.types,
+      Station.types,
+      Packaging.types,
+      LabelTemplate.types,
       Allergen.types,
       Brand.types
    ],
@@ -38,6 +49,10 @@ module.exports = makeExecutableSchema({
       Menu.resolvers,
       SupplierItem.resolvers,
       ProcessingName.resolvers,
+      Unit.resolvers,
+      Station.resolvers,
+      Packaging.resolvers,
+      LabelTemplate.resolvers,
       Allergen.resolvers,
       Brand.resolvers
    )

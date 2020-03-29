@@ -6,6 +6,7 @@ const typeDefs = gql`
       products: [Product]
    }
    type MenuCollection {
+      id: ID!
       name: String
       categories: [Category]
    }

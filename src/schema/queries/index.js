@@ -26,6 +26,21 @@ const typeDefs = gql`
       allergens: [Allergen]!
       allergen(id: ID!): Allergen
 
+      units: [Unit]!
+      unit(id: ID!): Unit
+
+      stations: [Station]!
+      station(id: ID!): Station
+
+      supplierItems: [SupplierItem]!
+      supplierItem(id: ID!): SupplierItem
+
+      packagings: [Packaging]!
+      packaging(id: ID): Packaging
+
+      labelTemplates: [LabelTemplate]!
+      labelTemplate(id: ID): LabelTemplate
+
       sachets: [Sachet]!
       sachet(id: ID!): Sachet
 

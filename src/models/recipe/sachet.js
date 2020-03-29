@@ -2,24 +2,52 @@ import mongoose from 'mongoose'
 
 const SachetSchema = new mongoose.Schema(
    {
+      isValid: {
+         type: Boolean,
+         default: false
+      },
       quantity: {
-         value: Number,
-         unit: String
+         value: {
+            type: Number,
+            required: ['Quantity is required for a sachet.']
+         },
+         unit: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Unit',
+            required: ['Quantity unit is required for storing quantity.']
+         }
+      },
+      tracking: {
+         type: Boolean,
+         required: ['Tracking value is required.']
       },
       modes: [
          {
-            label: String,
-            station: {
-               type: mongoose.Schema.Types.ObjectId,
-               ref: 'Station'
+            isActive: {
+               type: Boolean,
+               default: false
+            },
+            priority: {
+               type: Number
+            },
+            type: {
+               type: String,
+               enum: ['Real Time', 'Co-Packer', 'Planned Lot'],
+               required: ['Mode of fulfillment is required for a sachet.'],
+               default: 'Real Time'
             },
             station: {
                type: mongoose.Schema.Types.ObjectId,
-               ref: 'Station'
+               ref: 'Station',
+               required: ['Station is required for a sachet.']
             },
-            items: [
+            supplierItems: [
                {
-                  supplierItem: {
+                  isDefault: {
+                     type: Boolean,
+                     default: false
+                  },
+                  item: {
                      type: mongoose.Schema.Types.ObjectId,
                      ref: 'SupplierItem'
                   },
@@ -27,10 +55,14 @@ const SachetSchema = new mongoose.Schema(
                      type: Boolean,
                      default: true
                   },
-                  accuracy: Number,
+                  accuracy: {
+                     type: Number,
+                     required: ['Accuracy is required for a sachet.']
+                  },
                   packaging: {
                      type: mongoose.Schema.Types.ObjectId,
-                     ref: 'Packaging'
+                     ref: 'Packaging',
+                     required: ['Packaging type is required for a sachet.']
                   },
                   isLabelled: {
                      type: Boolean,
