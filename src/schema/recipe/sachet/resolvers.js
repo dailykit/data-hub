@@ -98,7 +98,11 @@ module.exports = {
                   }
                }
             )
-            return sachet
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               sachet
+            }
          } catch (error) {
             return error.message
          }
@@ -106,7 +110,9 @@ module.exports = {
       deleteSachet: async (_, { input }, { models }) => {
          try {
             const { Ingredient, IngredientProcessing, Sachet } = models
-            await Sachet.findOneAndDelete({ _id: input.sachetId })
+            const sachet = await Sachet.findOneAndDelete({
+               _id: input.sachetId
+            })
             await Ingredient.findOneAndUpdate(
                { _id: input.ingredientId },
                {
@@ -126,7 +132,7 @@ module.exports = {
             return {
                success: true,
                message: 'Sachet removed!',
-               id: input.sachetId
+               sachet
             }
          } catch (error) {
             return error.message

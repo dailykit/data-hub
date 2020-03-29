@@ -47,8 +47,12 @@ module.exports = {
       createIngredient: async (_, { name }, { models }) => {
          try {
             const { Ingredient } = models
-            const response = await Ingredient.create({ name })
-            return response
+            const ingredient = await Ingredient.create({ name })
+            return {
+               success: true,
+               message: 'Created ingredient successfully',
+               ingredient
+            }
          } catch (error) {
             return error.message
          }
@@ -68,7 +72,11 @@ module.exports = {
                   new: true
                }
             )
-            return ingredient
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               ingredient
+            }
          } catch (error) {
             return error.message
          }

@@ -12,44 +12,86 @@ const typeDefs = gql`
       recipe: Recipe
    }
 
+   type IngredientResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      ingredient: Ingredient
+   }
+
    type ProcessingResponse implements MutationResponse {
       success: Boolean!
       message: String!
-      id: ID
+      processing: IngredientProcessing
+   }
+
+   type ProcessingNameResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      processingName: ProcessingName
    }
 
    type SachetResponse implements MutationResponse {
       success: Boolean!
       message: String!
-      id: ID
+      sachet: Sachet
+   }
+
+   type SupplierItemResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      supplierItem: SupplierItem
+   }
+
+   type UnitResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      unit: Unit
+   }
+
+   type StationResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      station: Station
+   }
+
+   type PackagingResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      packaging: Packaging
+   }
+
+   type LabelTemplateResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      labelTemplate: LabelTemplate
    }
 
    type Mutation {
       createRecipe(name: String): RecipeResponse
 
-      createIngredient(name: String): Ingredient
+      createIngredient(name: String): IngredientResponse
 
-      updateIngredient(input: UpdateIngredientInput): Ingredient
+      updateIngredient(input: UpdateIngredientInput): IngredientResponse
 
       createProcessings(input: CreateProcessingsInput): [IngredientProcessing]
 
       deleteProcessing(input: DeleteProcessingInput): ProcessingResponse
 
-      createSachet(input: CreateSachetInput): Sachet
+      createSachet(input: CreateSachetInput): SachetResponse
 
       deleteSachet(input: DeleteSachetInput): SachetResponse
 
-      createProcessingName(title: String): ProcessingName
+      createProcessingName(title: String): ProcessingNameResponse
 
-      createSupplierItem(title: String): SupplierItem
+      createSupplierItem(title: String): SupplierItemResponse
 
-      createUnit(title: String): Unit
+      createUnit(title: String): UnitResponse
 
-      createStation(title: String): Station
+      createStation(title: String): StationResponse
 
-      createPackaging(title: String): Packaging
+      createPackaging(title: String): PackagingResponse
 
-      createLabelTemplate(title: String): LabelTemplate
+      createLabelTemplate(title: String): LabelTemplateResponse
    }
 `
 

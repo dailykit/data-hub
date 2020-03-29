@@ -23,10 +23,14 @@ module.exports = {
       createUnit: (_, { title }, { models }) => {
          try {
             const { Unit } = models
-            const response = Unit.create({
+            const unit = Unit.create({
                title
             })
-            return response
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               unit
+            }
          } catch (error) {
             return error.message
          }

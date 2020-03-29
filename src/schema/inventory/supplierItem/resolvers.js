@@ -23,8 +23,12 @@ module.exports = {
       createSupplierItem: async (_, { title }, { models }) => {
          try {
             const { SupplierItem } = models
-            const response = await SupplierItem.create({ title })
-            return response
+            const supplierItem = await SupplierItem.create({ title })
+            return {
+               success: true,
+               message: 'Create Supplier Item',
+               supplierItem
+            }
          } catch (error) {
             return error.message
          }

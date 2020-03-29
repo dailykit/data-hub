@@ -23,10 +23,14 @@ module.exports = {
       createProcessingName: (_, { title }, { models }) => {
          try {
             const { ProcessingName } = models
-            const response = ProcessingName.create({
+            const processingName = ProcessingName.create({
                title
             })
-            return response
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               processingName
+            }
          } catch (error) {
             return error.message
          }

@@ -23,10 +23,14 @@ module.exports = {
       createStation: (_, { title }, { models }) => {
          try {
             const { Station } = models
-            const response = Station.create({
+            const station = Station.create({
                title
             })
-            return response
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               station
+            }
          } catch (error) {
             return error.message
          }

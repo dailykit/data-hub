@@ -23,10 +23,14 @@ module.exports = {
       createPackaging: (_, { title }, { models }) => {
          try {
             const { Packaging } = models
-            const response = Packaging.create({
+            const packaging = Packaging.create({
                title
             })
-            return response
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               packaging
+            }
          } catch (error) {
             return error.message
          }

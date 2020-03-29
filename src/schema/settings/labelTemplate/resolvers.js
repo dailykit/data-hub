@@ -23,10 +23,14 @@ module.exports = {
       createLabelTemplate: (_, { title }, { models }) => {
          try {
             const { LabelTemplate } = models
-            const response = LabelTemplate.create({
+            const labelTemplate = LabelTemplate.create({
                title
             })
-            return response
+            return {
+               success: true,
+               message: 'Updated ingredient successfully',
+               labelTemplate
+            }
          } catch (error) {
             return error.message
          }

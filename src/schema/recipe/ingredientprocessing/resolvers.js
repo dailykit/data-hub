@@ -105,8 +105,7 @@ module.exports = {
             return {
                success: true,
                message: 'Processing deleted!',
-               // return id from deleted obj, later
-               id: input.processingId
+               processing
             }
          } catch (error) {
             throw error.message
