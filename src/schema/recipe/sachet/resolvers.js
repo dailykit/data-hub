@@ -105,7 +105,6 @@ module.exports = {
       },
       deleteSachet: async (_, { input }, { models }) => {
          try {
-            console.log(input)
             const { Ingredient, IngredientProcessing, Sachet } = models
             await Sachet.findOneAndDelete({ _id: input.sachetId })
             await Ingredient.findOneAndUpdate(
