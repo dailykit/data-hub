@@ -7,6 +7,7 @@ const typeDefs = gql`
       zipcode: [Int]
    }
    type Brand {
+      id: ID!
       name: String
       logo: String
       menus: [MenuItem]

@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
    type Packaging {
-      id: ID
+      id: ID!
       title: String
    }
 `

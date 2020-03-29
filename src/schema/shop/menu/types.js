@@ -27,6 +27,7 @@ const typeDefs = gql`
       availability: [String]
    }
    type Menu {
+      id: ID!
       name: String
       menuCollections: [MenuCollectionItem]
    }

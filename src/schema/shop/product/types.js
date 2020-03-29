@@ -26,6 +26,7 @@ const typeDefs = gql`
       recipes: [RecipeItem]
    }
    type Product {
+      id: ID!
       name: String
       realtime: Boolean
       preOrder: PreOrder
