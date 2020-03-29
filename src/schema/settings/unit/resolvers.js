@@ -12,7 +12,7 @@ module.exports = {
       unit: async (parent, { id }, { models }) => {
          try {
             const { Unit } = models
-            const unit = await Unit.find({ _id: id })
+            const unit = await Unit.findOne({ _id: id })
             return unit
          } catch (error) {
             return error.message

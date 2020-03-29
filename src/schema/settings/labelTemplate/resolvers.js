@@ -12,7 +12,7 @@ module.exports = {
       labelTemplate: async (parent, { id }, { models }) => {
          try {
             const { LabelTemplate } = models
-            const labelTemplate = await LabelTemplate.find({ _id: id })
+            const labelTemplate = await LabelTemplate.findOne({ _id: id })
             return labelTemplate
          } catch (error) {
             return error.message

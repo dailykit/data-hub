@@ -56,7 +56,7 @@ module.exports = {
       recipe: async (parent, { id }, { models }) => {
          try {
             const { Recipe } = models
-            const recipe = await Recipe.find(id)
+            const recipe = await Recipe.findOne({ _id: id })
             return recipe
          } catch (error) {
             return error.message

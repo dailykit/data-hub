@@ -12,7 +12,7 @@ module.exports = {
       packaging: async (parent, { id }, { models }) => {
          try {
             const { Packaging } = models
-            const packaging = await Packaging.find({ _id: id })
+            const packaging = await Packaging.findOne({ _id: id })
             return packaging
          } catch (error) {
             return error.message

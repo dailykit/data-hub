@@ -12,7 +12,7 @@ module.exports = {
       allergen: async (parent, { id }, { models }) => {
          try {
             const { Allergen } = models
-            const allergen = await Allergen.find(id)
+            const allergen = await Allergen.findOne({ _id: id })
             return allergen
          } catch (error) {
             return error.message

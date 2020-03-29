@@ -26,7 +26,7 @@ module.exports = {
       menucollection: async (parent, { id }, { models }) => {
          try {
             const { MenuCollection } = models
-            const collection = await MenuCollection.find(id)
+            const collection = await MenuCollection.findOne({ _id: id })
             return collection
          } catch (error) {
             return error.message

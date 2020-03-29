@@ -12,7 +12,7 @@ module.exports = {
       processingName: async (parent, { id }, { models }) => {
          try {
             const { ProcessingName } = models
-            const processingName = await ProcessingName.find(id)
+            const processingName = await ProcessingName.findOne({ _id: id })
             return processingName
          } catch (error) {
             return error.message

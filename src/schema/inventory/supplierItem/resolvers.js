@@ -12,7 +12,7 @@ module.exports = {
       supplierItem: async (_, { id }, { models }) => {
          try {
             const { SupplierItem } = models
-            const supplierItem = await SupplierItem.find({ _id: id })
+            const supplierItem = await SupplierItem.findOne({ _id: id })
             return supplierItem
          } catch (error) {
             return error.message
