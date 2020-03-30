@@ -62,5 +62,45 @@ module.exports = {
             return error.message
          }
       }
+   },
+   Mutation: {
+      createRecipe: async (_, { name }, { models }) => {
+         try {
+            const { Recipe } = models
+            const recipe = await Recipe.create({ name })
+            return {
+               success: true,
+               message: 'Recipe created successfully',
+               recipe
+            }
+         } catch (error) {
+            return error.message
+         }
+      },
+      updateRecipe: async (_, { input }, { models }) => {
+         try {
+            const { Recipe } = models
+            const recipe = await Recipe.findOneAndUpdate(
+               {
+                  _id: input.id
+               },
+               {
+                  $set: {
+                     name: input.name
+                  }
+               },
+               {
+                  new: true
+               }
+            )
+            return {
+               success: true,
+               message: 'Recipe update successfully',
+               recipe
+            }
+         } catch (error) {
+            return error.message
+         }
+      }
    }
 }

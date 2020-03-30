@@ -69,6 +69,8 @@ const typeDefs = gql`
    type Mutation {
       createRecipe(name: String): RecipeResponse
 
+      updateRecipe(input: UpdateRecipeInput): RecipeResponse
+
       createIngredient(name: String): IngredientResponse
 
       updateIngredient(input: UpdateIngredientInput): IngredientResponse

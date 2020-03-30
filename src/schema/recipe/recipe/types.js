@@ -28,6 +28,11 @@ const typeDefs = gql`
       images: [String]!
       videos: [String]!
    }
+
+   input UpdateRecipeInput {
+      id: ID!
+      name: String!
+   }
 `
 
 export default typeDefs
