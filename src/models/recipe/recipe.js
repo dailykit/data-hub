@@ -5,6 +5,7 @@ const RecipeSchema = new Schema(
    {
       name: String,
       type: String,
+      assets: { images: [{ url: String }] },
       allergens: [
          {
             type: mongoose.Schema.Types.ObjectId,

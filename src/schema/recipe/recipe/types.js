@@ -8,6 +8,13 @@ const typeDefs = gql`
       servings: [Serving]!
       procedures: [Procedure]!
       allergens: [Allergen]!
+      assets: Asset
+   }
+   type ImageItem {
+      url: String
+   }
+   type Asset {
+      images: [ImageItem]
    }
    type Serving {
       size: Int
