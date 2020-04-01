@@ -5,6 +5,10 @@ const RecipeSchema = new Schema(
    {
       name: String,
       type: String,
+      cookingTime: Number,
+      chef: String,
+      description: String,
+      utensils: String,
       allergens: [
          {
             type: mongoose.Schema.Types.ObjectId,

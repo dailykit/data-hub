@@ -28,7 +28,7 @@ module.exports = {
             })
             return {
                success: true,
-               message: 'Updated ingredient successfully',
+               message: 'Added processing name successfully',
                processingName
             }
          } catch (error) {

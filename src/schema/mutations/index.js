@@ -48,6 +48,12 @@ const typeDefs = gql`
       unit: Unit
    }
 
+   type UtensilResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      utensil: Utensil
+   }
+
    type StationResponse implements MutationResponse {
       success: Boolean!
       message: String!
@@ -88,6 +94,8 @@ const typeDefs = gql`
       createSupplierItem(title: String): SupplierItemResponse
 
       createUnit(title: String): UnitResponse
+
+      createUtensil(title: String): UtensilResponse
 
       createStation(title: String): StationResponse
 

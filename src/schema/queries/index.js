@@ -29,6 +29,9 @@ const typeDefs = gql`
       units: [Unit]!
       unit(id: ID!): Unit
 
+      utensils: [Utensil]!
+      utensil(id: ID!): Utensil
+
       stations: [Station]!
       station(id: ID!): Station
 

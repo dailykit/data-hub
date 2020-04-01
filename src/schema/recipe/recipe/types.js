@@ -5,6 +5,10 @@ const typeDefs = gql`
       id: ID
       name: String
       type: String
+      cookingTime: String
+      chef: String
+      utensils: String
+      description: String
       servings: [Serving]!
       procedures: [Procedure]!
       allergens: [Allergen]!

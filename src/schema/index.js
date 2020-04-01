@@ -10,7 +10,8 @@ import {
    Unit,
    Station,
    Packaging,
-   LabelTemplate
+   LabelTemplate,
+   Utensil
 } from './settings'
 import Brand from './brand'
 
@@ -35,6 +36,7 @@ module.exports = makeExecutableSchema({
       Station.types,
       Packaging.types,
       LabelTemplate.types,
+      Utensil.types,
       Allergen.types,
       Brand.types
    ],
@@ -53,6 +55,7 @@ module.exports = makeExecutableSchema({
       Station.resolvers,
       Packaging.resolvers,
       LabelTemplate.resolvers,
+      Utensil.resolvers,
       Allergen.resolvers,
       Brand.resolvers
    )

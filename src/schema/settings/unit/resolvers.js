@@ -28,7 +28,7 @@ module.exports = {
             })
             return {
                success: true,
-               message: 'Updated ingredient successfully',
+               message: 'Added unit successfully!',
                unit
             }
          } catch (error) {
