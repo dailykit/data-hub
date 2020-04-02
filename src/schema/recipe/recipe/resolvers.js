@@ -86,7 +86,15 @@ module.exports = {
                },
                {
                   $set: {
-                     name: input.name
+                     name: input.name,
+                     type: input.type,
+                     cookingTime: input.cookingTime,
+                     chef: input.chef,
+                     description: input.description,
+                     photos: [],
+                     utensils: input.utensils,
+                     servings: input.servings,
+                     procedures: input.procedures
                   }
                },
                {

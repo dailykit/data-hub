@@ -9,6 +9,7 @@ const typeDefs = gql`
       chef: String
       utensils: String
       description: String
+      photos: [String]
       servings: [Serving]!
       procedures: [Procedure]!
       allergens: [Allergen]!
@@ -35,7 +36,31 @@ const typeDefs = gql`
 
    input UpdateRecipeInput {
       id: ID!
-      name: String!
+      name: String
+      type: String
+      cookingType: Int
+      chef: String
+      description: String
+      utensils: String
+      servings: [ServingInput]
+      procedures: [ProcedureInput]
+   }
+   input ServingInput {
+      size: Int
+      ingredients: [IngredientItemInput]
+   }
+   input IngredientItemInput {
+      ingredient: ID
+      processing: ID
+      sachet: ID
+   }
+   input ProcedureInput {
+      name: String
+      steps: [StepInput]
+   }
+   input StepInput {
+      title: String
+      description: String
    }
 `
 
