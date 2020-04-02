@@ -9,10 +9,16 @@ const typeDefs = gql`
       chef: String
       utensils: String
       description: String
-      photos: [String]
       servings: [Serving]!
       procedures: [Procedure]!
       allergens: [Allergen]!
+      assets: Asset
+   }
+   type ImageItem {
+      url: String
+   }
+   type Asset {
+      images: [ImageItem]
    }
    type Serving {
       size: Int

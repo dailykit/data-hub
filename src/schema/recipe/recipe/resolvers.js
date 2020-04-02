@@ -91,7 +91,6 @@ module.exports = {
                      cookingTime: input.cookingTime,
                      chef: input.chef,
                      description: input.description,
-                     photos: [],
                      utensils: input.utensils,
                      servings: input.servings,
                      procedures: input.procedures

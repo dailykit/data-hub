@@ -8,8 +8,8 @@ const RecipeSchema = new Schema(
       cookingTime: Number,
       chef: String,
       description: String,
-      photos: [String],
       utensils: String,
+      assets: { images: [{ url: String }] },
       allergens: [
          {
             type: mongoose.Schema.Types.ObjectId,
