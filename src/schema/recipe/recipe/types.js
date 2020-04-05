@@ -14,12 +14,6 @@ const typeDefs = gql`
       allergens: [Allergen]!
       assets: Asset
    }
-   type ImageItem {
-      url: String
-   }
-   type Asset {
-      images: [ImageItem]
-   }
    type Serving {
       size: Int
       ingredients: [IngredientItem]
@@ -30,14 +24,17 @@ const typeDefs = gql`
       sachet: Sachet
    }
    type Procedure {
-      name: String
-      steps: [Step]
-   }
-   type Step {
       title: String
       description: String
-      images: [String]!
-      videos: [String]!
+      assets: Asset
+   }
+   type Asset {
+      images: [AssetInfo]!
+      videos: [AssetInfo]!
+   }
+   type AssetInfo {
+      caption: String
+      url: String
    }
 
    input UpdateRecipeInput {

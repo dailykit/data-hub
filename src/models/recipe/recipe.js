@@ -9,7 +9,7 @@ const RecipeSchema = new Schema(
       chef: String,
       description: String,
       utensils: String,
-      assets: { images: [{ url: String }] },
+      assets: { images: [{ caption: String, url: String }] },
       allergens: [
          {
             type: mongoose.Schema.Types.ObjectId,
@@ -39,15 +39,12 @@ const RecipeSchema = new Schema(
       ],
       procedures: [
          {
-            name: String,
-            steps: [
-               {
-                  title: String,
-                  description: String,
-                  images: [String],
-                  videos: [String]
-               }
-            ]
+            title: String,
+            description: String,
+            assets: {
+               images: [{ caption: String, url: String }],
+               videos: [{ caption: String, url: String }]
+            }
          }
       ]
    },
