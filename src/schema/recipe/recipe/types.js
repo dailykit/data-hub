@@ -5,7 +5,7 @@ const typeDefs = gql`
       id: ID
       name: String
       type: String
-      cookingTime: String
+      cookingTime: Int
       chef: String
       utensils: String
       description: String
