@@ -24,6 +24,10 @@ const typeDefs = gql`
       sachet: Sachet
    }
    type Procedure {
+      name: String
+      steps: [Step]
+   }
+   type Step {
       title: String
       description: String
       images: [AssetInfo]
