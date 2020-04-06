@@ -26,11 +26,12 @@ const typeDefs = gql`
    type Procedure {
       title: String
       description: String
-      assets: Asset
+      images: [AssetInfo]
+      video: AssetInfo
    }
    type Asset {
       images: [AssetInfo]!
-      videos: [AssetInfo]!
+      video: AssetInfo
    }
    type AssetInfo {
       caption: String
@@ -41,7 +42,7 @@ const typeDefs = gql`
       id: ID!
       name: String
       type: String
-      cookingType: Int
+      cookingTime: Int
       chef: String
       description: String
       utensils: String
@@ -64,6 +65,12 @@ const typeDefs = gql`
    input StepInput {
       title: String
       description: String
+      images: [AssetInput]
+      video: AssetInput
+   }
+   input AssetInput {
+      caption: String
+      url: String
    }
 `
 

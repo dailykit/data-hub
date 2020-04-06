@@ -39,12 +39,15 @@ const RecipeSchema = new Schema(
       ],
       procedures: [
          {
-            title: String,
-            description: String,
-            assets: {
-               images: [{ caption: String, url: String }],
-               videos: [{ caption: String, url: String }]
-            }
+            name: String,
+            steps: [
+               {
+                  title: String,
+                  description: String,
+                  images: [{ caption: String, url: String }],
+                  video: { caption: String, url: String }
+               }
+            ]
          }
       ]
    },
