@@ -6,6 +6,14 @@ const SachetSchema = new mongoose.Schema(
          type: Boolean,
          default: false
       },
+      ingredient: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: 'Ingredient'
+      },
+      processing: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: 'IngredientProcessing'
+      },
       quantity: {
          value: {
             type: Number,

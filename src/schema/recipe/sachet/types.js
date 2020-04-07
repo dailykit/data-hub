@@ -4,6 +4,8 @@ const typeDefs = gql`
    type Sachet {
       id: ID
       isValid: Boolean
+      ingredient: Ingredient
+      processing: IngredientProcessing
       quantity: Quantity
       tracking: Boolean
       modes: [Mode]

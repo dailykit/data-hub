@@ -1,4 +1,26 @@
 module.exports = {
+   Sachet: {
+      ingredient: async (parent, _, { models }) => {
+         try {
+            const { Ingredient } = models
+            const ingredient = await Ingredient.findOne(parent.ingredient)
+            return ingredient
+         } catch {
+            return error.message
+         }
+      },
+      processing: async (parent, _, { models }) => {
+         try {
+            const { IngredientProcessing } = models
+            const processing = await IngredientProcessing.findOne(
+               parent.processing
+            )
+            return processing
+         } catch {
+            return error.message
+         }
+      }
+   },
    Quantity: {
       unit: async (parent, _, { models }) => {
          try {
@@ -74,7 +96,12 @@ module.exports = {
       createSachet: async (_, { input }, { models }) => {
          try {
             const { Ingredient, IngredientProcessing, Sachet } = models
-            const sachet = await Sachet.create(input.sachet)
+            const newSachet = {
+               ingredient: ingredientId,
+               processing: processingId,
+               ...input.sachet
+            }
+            const sachet = await Sachet.create(newSachet)
             await IngredientProcessing.findOneAndUpdate(
                {
                   _id: input.processingId
