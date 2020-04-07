@@ -16,23 +16,25 @@ const RecipeSchema = new Schema(
             ref: 'Allergen'
          }
       ],
+      ingredients: [
+         {
+            ingredient: {
+               type: mongoose.Schema.Types.ObjectId,
+               ref: 'Ingredient'
+            },
+            processing: {
+               type: mongoose.Schema.Types.ObjectId,
+               ref: 'IngredientProcessing'
+            }
+         }
+      ],
       servings: [
          {
             size: Number,
-            ingredients: [
+            sachets: [
                {
-                  ingredient: {
-                     type: mongoose.Schema.Types.ObjectId,
-                     ref: 'Ingredient'
-                  },
-                  processing: {
-                     type: mongoose.Schema.Types.ObjectId,
-                     ref: 'IngredientProcessing'
-                  },
-                  sachet: {
-                     type: mongoose.Schema.Types.ObjectId,
-                     ref: 'Sachet'
-                  }
+                  type: mongoose.Schema.Types.ObjectId,
+                  ref: 'Sachet'
                }
             ]
          }

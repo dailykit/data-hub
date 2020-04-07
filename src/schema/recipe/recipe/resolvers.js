@@ -32,12 +32,16 @@ module.exports = {
          } catch (error) {
             return error.message
          }
-      },
-      sachet: async (parent, _, { models }) => {
+      }
+   },
+   Serving: {
+      sachets: async (parent, _, { models }) => {
          try {
             const { Sachet } = models
-            const sachet = await Sachet.findOne(parent.sachet)
-            return sachet
+            const sachets = await parent.sachets.map(sachet =>
+               Sachet.findOne(sachet.id)
+            )
+            return sachets
          } catch (error) {
             return error.message
          }
@@ -92,6 +96,7 @@ module.exports = {
                      chef: input.chef,
                      description: input.description,
                      utensils: input.utensils,
+                     ingredients: input.ingredients,
                      servings: input.servings,
                      procedures: input.procedures
                   }

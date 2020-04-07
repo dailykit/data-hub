@@ -9,19 +9,19 @@ const typeDefs = gql`
       chef: String
       utensils: String
       description: String
+      ingredients: [IngredientItem]
       servings: [Serving]!
       procedures: [Procedure]!
       allergens: [Allergen]!
       assets: Asset
    }
-   type Serving {
-      size: Int
-      ingredients: [IngredientItem]
-   }
    type IngredientItem {
       ingredient: Ingredient
       processing: IngredientProcessing
-      sachet: Sachet
+   }
+   type Serving {
+      size: Int
+      sachets: [Sachet]
    }
    type Procedure {
       name: String
@@ -50,17 +50,17 @@ const typeDefs = gql`
       chef: String
       description: String
       utensils: String
+      ingredients: [IngredientItemInput]
       servings: [ServingInput]
       procedures: [ProcedureInput]
    }
    input ServingInput {
       size: Int
-      ingredients: [IngredientItemInput]
+      sachets: [ID]
    }
    input IngredientItemInput {
       ingredient: ID
       processing: ID
-      sachet: ID
    }
    input ProcedureInput {
       name: String
