@@ -39,7 +39,7 @@ module.exports = {
          try {
             const { Sachet } = models
             const sachets = await parent.sachets.map(sachet =>
-               Sachet.findOne(sachet.id)
+               Sachet.findOne(sachet)
             )
             return sachets
          } catch (error) {
