@@ -31,19 +31,37 @@ const random = (noOfDocs) => {
 //main function to generate fake data
 const fake_data = (noOfDocs) => {
 
-    let processingName = generate_fake_data(models.ProcessingName, noOfDocs, {}),
-        allergen = generate_fake_data(models.Allergen, noOfDocs, {}),
-        station = generate_fake_data(models.Station, noOfDocs, {}),
-        unit = generate_fake_data(models.Unit, noOfDocs, {}),
-        packaging = generate_fake_data(models.Packaging, noOfDocs, {}),
-        labelTemplate = generate_fake_data(models.LabelTemplate, noOfDocs, {});
+    let processingNames = generate_fake_data(models.ProcessingName, noOfDocs, {}),
+        allergens = generate_fake_data(models.Allergen, noOfDocs, {}),
+        stations = generate_fake_data(models.Station, noOfDocs, {}),
+        units = generate_fake_data(models.Unit, noOfDocs, {}),
+        packagings = generate_fake_data(models.Packaging, noOfDocs, {}),
+        labelTemplates = generate_fake_data(models.LabelTemplate, noOfDocs, {});
 
 
     let sachets = generate_fake_data(models.Sachet, noOfDocs, {
-        unit: unit[random(noOfDocs)]._id.toHexString(),
-        station: station[random(noOfDocs)]._id.toHexString(),
-        packaging: packaging[random(noOfDocs)]._id.toHexString(),
-        labelTemplate: labelTemplate[random(noOfDocs)]._id.toHexString(),
+        unit: units[random(noOfDocs)]._id,
+        station: stations[random(noOfDocs)]._id,
+        packaging: packagings[random(noOfDocs)]._id,
+        labelTemplate: labelTemplates[random(noOfDocs)]._id,
+    });
+
+    let ingredientProcessings = generate_fake_data(models.IngredientProcessing, noOfDocs, {
+        name: processingNames[random(noOfDocs)]._id,
+        sachets: [sachets[random(noOfDocs)]._id, sachets[random(noOfDocs)]._id],
+        recipes: []
+    });
+
+    let ingredients = generate_fake_data(models.Ingredient, noOfDocs, {
+        processings: [ingredientProcessings[random(noOfDocs)]._id, ingredientProcessings[random(noOfDocs)]._id],
+        sachets: [sachets[random(noOfDocs)]._id, sachets[random(noOfDocs)]._id]
+    });
+
+    let recipes = generate_fake_data(models.Recipe, noOfDocs, {
+        allergens: [allergens[random(noOfDocs)]._id, allergens[random(noOfDocs)]._id],
+        ingredient: ingredients[random(noOfDocs)]._id,
+        processing: ingredientProcessings[random(noOfDocs)]._id,
+        sachet: sachets[random(noOfDocs)]._id
     });
 }
 
