@@ -6,6 +6,12 @@ const typeDefs = gql`
       message: String!
    }
 
+   type ProductResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      product: Product
+   }
+
    type RecipeResponse implements MutationResponse {
       success: Boolean!
       message: String!
@@ -73,6 +79,10 @@ const typeDefs = gql`
    }
 
    type Mutation {
+      createProduct(name: String): ProductResponse
+
+      updateProduct(input: UpdateProductInput): ProductResponse
+
       createRecipe(name: String): RecipeResponse
 
       updateRecipe(input: UpdateRecipeInput): RecipeResponse

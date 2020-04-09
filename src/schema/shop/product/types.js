@@ -32,6 +32,13 @@ const typeDefs = gql`
       preOrder: PreOrder
       items: [Item]
    }
+
+   input UpdateProductInput {
+      id: ID!
+      name: String
+      realtime: Boolean
+      #Add fields here as we go
+   }
 `
 
 export default typeDefs

@@ -40,5 +40,46 @@ module.exports = {
             return error.message
          }
       }
+   },
+   Mutation: {
+      createProduct: async (_, { name }, { models }) => {
+         try {
+            const { Product } = models
+            const product = await Product.create({ name })
+            return {
+               success: true,
+               message: 'Product created successfully!',
+               product
+            }
+         } catch (error) {
+            return error.message
+         }
+      },
+      updateProduct: async (_, { input }, { models }) => {
+         try {
+            const { Product } = models
+            const product = await Product.findOneAndUpdate(
+               {
+                  id: input.id
+               },
+               {
+                  $set: {
+                     name: input.name,
+                     realtime: input.realtime
+                  }
+               },
+               {
+                  new: true
+               }
+            )
+            return {
+               success: true,
+               message: 'Product update successfully!',
+               product
+            }
+         } catch (error) {
+            return error.message
+         }
+      }
    }
 }
