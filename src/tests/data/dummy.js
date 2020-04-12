@@ -25,7 +25,11 @@ const generate_fake_data = (Model, noOfDocs, forceFields) => {
 // The random number refers to an index position for the array of documents.
 const random = (noOfDocs) => {
 
-    return Math.round((Math.random() * noOfDocs) - 1);
+    let num = Math.round((Math.random() * noOfDocs) - 1);
+    if (num < 0)
+        return 0;
+    else
+        return num;
 }
 
 //main function to generate fake data for all the models
@@ -37,7 +41,6 @@ const fake_data = (noOfDocs) => {
         units = generate_fake_data(models.Unit, noOfDocs, {}),
         packagings = generate_fake_data(models.Packaging, noOfDocs, {}),
         labelTemplates = generate_fake_data(models.LabelTemplate, noOfDocs, {});
-
 
     let sachets = generate_fake_data(models.Sachet, noOfDocs, {
         unit: units[random(noOfDocs)]._id,
@@ -67,16 +70,16 @@ const fake_data = (noOfDocs) => {
     let brands = generate_fake_data(models.Brand, noOfDocs, {});
 
     let products = generate_fake_data(models.Product, noOfDocs, {
-        defaultRecipe: recipes[random(noOfDocs)],
-        recipe: recipes[random(noOfDocs)]
+        defaultRecipe: recipes[random(noOfDocs)]._id,
+        recipe: recipes[random(noOfDocs)]._id
     });
 
     let collections = generate_fake_data(models.MenuCollection, noOfDocs, {
-        products: [products[random(noOfDocs)], products[random(noOfDocs)]]
+        products: [products[random(noOfDocs)]._id, products[random(noOfDocs)]._id]
     });
 
     let menus = generate_fake_data(models.Menu, noOfDocs, {
-        menuCollection: collections[random(noOfDocs)]
+        menuCollection: collections[random(noOfDocs)]._id
     });
 
     return {
