@@ -28,7 +28,7 @@ const random = (noOfDocs) => {
     return Math.round((Math.random() * noOfDocs) - 1);
 }
 
-//main function to generate fake data
+//main function to generate fake data for all the models
 const fake_data = (noOfDocs) => {
 
     let processingNames = generate_fake_data(models.ProcessingName, noOfDocs, {}),
@@ -63,8 +63,41 @@ const fake_data = (noOfDocs) => {
         processing: ingredientProcessings[random(noOfDocs)]._id,
         sachet: sachets[random(noOfDocs)]._id
     });
+
+    let brands = generate_fake_data(models.Brand, noOfDocs, {});
+
+    let products = generate_fake_data(models.Product, noOfDocs, {
+        defaultRecipe: recipes[random(noOfDocs)],
+        recipe: recipes[random(noOfDocs)]
+    });
+
+    let collections = generate_fake_data(models.MenuCollection, noOfDocs, {
+        products: [products[random(noOfDocs)], products[random(noOfDocs)]]
+    });
+
+    let menus = generate_fake_data(models.Menu, noOfDocs, {
+        menuCollection: collections[random(noOfDocs)]
+    });
+
+    return {
+        processingNames,
+        allergens,
+        stations,
+        units,
+        packagings,
+        labelTemplates,
+        sachets,
+        ingredientProcessings,
+        ingredients,
+        recipes,
+        brands,
+        products,
+        products,
+        collections,
+        menus
+    }
 }
 
-module.exports = {
+export {
     fake_data
 }
