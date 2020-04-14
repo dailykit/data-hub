@@ -20,6 +20,7 @@ const MenuCollectionSchema = new Schema(
             ]
          }
       ],
+      availability: String,
       active: Boolean
    },
    {
