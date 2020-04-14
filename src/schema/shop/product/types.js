@@ -39,6 +39,8 @@ const typeDefs = gql`
       title: String
       realtime: Boolean
       preOrder: PreOrder
+      tags: [String]
+      description: String
       items: [Item]
    }
 
@@ -46,6 +48,8 @@ const typeDefs = gql`
       id: ID!
       title: String
       realtime: Boolean
+      tags: [String]
+      description: String
       preOrder: PreOrderInput
       items: [ItemInput]!
    }

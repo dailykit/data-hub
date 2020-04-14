@@ -5,6 +5,8 @@ const productSchema = new Schema(
    {
       title: String,
       realtime: Boolean,
+      description: String,
+      tags: [String],
       preOrder: {
          isActive: Boolean,
          days: Number
