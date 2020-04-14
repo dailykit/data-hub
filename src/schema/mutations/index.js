@@ -91,13 +91,13 @@ const typeDefs = gql`
    }
 
    type Mutation {
-      createMenuCollection(name: String): MenuCollectionResponse
+      createMenuCollection(title: String): MenuCollectionResponse
 
       updateMenuCollection(
          input: UpdateMenuCollectionInput
       ): MenuCollectionResponse
 
-      createProduct(name: String): ProductResponse
+      createProduct(title: String): ProductResponse
 
       updateProduct(input: UpdateProductInput): ProductResponse
 
