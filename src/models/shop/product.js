@@ -43,7 +43,7 @@ const productSchema = new Schema(
                   ],
                   accompaniments: [
                      {
-                        title: {
+                        type: {
                            type: Schema.Types.ObjectId,
                            ref: 'AccompanimentType'
                         },

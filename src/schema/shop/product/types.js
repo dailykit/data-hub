@@ -14,11 +14,20 @@ const typeDefs = gql`
       price: Int
       discount: Int
    }
+   type AccompanimentProduct {
+      product: Product
+      discount: Int
+   }
+   type Accompaniment {
+      type: AccompanimentType
+      products: [AccompanimentProduct]
+   }
    type RecipeItem {
       recipe: Recipe
       defaultState: ServingType
       mealKit: [ServingDetail]
       readyToEat: [ServingDetail]
+      accompaniments: [Accompaniment]
    }
    type Item {
       label: String
@@ -57,11 +66,11 @@ const typeDefs = gql`
       accompaniments: [AccompanimentInput]
    }
    input AccompanimentInput {
-      title: ID
+      type: ID
       products: [AccompanimentProductInput]
    }
    input AccompanimentProductInput {
-      product: Product
+      product: ID
       discount: Int
    }
    input MealInput {
