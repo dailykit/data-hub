@@ -54,6 +54,15 @@ const typeDefs = gql`
       defualtState: String
       mealKit: [MealInput]
       readyToEat: [MealInput]
+      accompaniments: [AccompanimentInput]
+   }
+   input AccompanimentInput {
+      title: ID
+      products: [AccompanimentProductInput]
+   }
+   input AccompanimentProductInput {
+      product: Product
+      discount: Int
    }
    input MealInput {
       size: Int

@@ -40,6 +40,25 @@ const productSchema = new Schema(
                         price: Number,
                         discount: Number
                      }
+                  ],
+                  accompaniments: [
+                     {
+                        title: {
+                           type: Schema.Types.ObjectId,
+                           ref: 'AccompanimentType'
+                        },
+                        products: [
+                           {
+                              product: {
+                                 type: Schema.Types.ObjectId,
+                                 ref: 'Product'
+                              },
+                              discount: {
+                                 type: Number
+                              }
+                           }
+                        ]
+                     }
                   ]
                }
             ]

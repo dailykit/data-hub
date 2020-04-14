@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const MenuCollectionSchema = new Schema(
    {
-      name: String,
+      title: String,
       priority: Number, //acts like z-index in case of css that helps decide the priority between menus
       categories: [
          {
