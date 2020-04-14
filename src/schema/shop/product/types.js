@@ -37,7 +37,28 @@ const typeDefs = gql`
       id: ID!
       name: String
       realtime: Boolean
-      #Add fields here as we go
+      preOrder: PreOrderInput
+      items: [ItemInput]!
+   }
+   input PreOrderInput {
+      isActive: Boolean
+      days: Int
+   }
+   input ItemInput {
+      label: String
+      defaultRecipe: ID
+      recipes: [RecipeInput]
+   }
+   input RecipeInput {
+      recipe: ID
+      defualtState: String
+      mealKit: [MealInput]
+      readyToEat: [MealInput]
+   }
+   input MealInput {
+      size: Int
+      price: Int
+      discount: Int
    }
 `
 

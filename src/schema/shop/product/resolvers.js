@@ -65,7 +65,9 @@ module.exports = {
                {
                   $set: {
                      name: input.name,
-                     realtime: input.realtime
+                     realtime: input.realtime,
+                     preOrder: input.preOrder,
+                     items: input.items
                   }
                },
                {
