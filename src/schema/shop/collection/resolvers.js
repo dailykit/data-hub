@@ -32,5 +32,45 @@ module.exports = {
             return error.message
          }
       }
+   },
+   Mutation: {
+      createMenuCollection: async (_, { name }, { models }) => {
+         try {
+            const { MenuCollection } = models
+            const menuCollection = await MenuCollection.create({ name })
+            return {
+               success: true,
+               message: 'Menu Collection created successfully!',
+               menuCollection
+            }
+         } catch (error) {
+            return error.message
+         }
+      },
+      updateMenuCollection: async (_, { input }, { models }) => {
+         try {
+            const { MenuCollection } = models
+            const menuCollection = await MenuCollection.findOneAndUpdate(
+               { _id: input.id },
+               {
+                  $set: {
+                     name: input.name,
+                     categories: input.categories,
+                     availability: input.availability
+                  }
+               },
+               {
+                  new: true
+               }
+            )
+            return {
+               success: true,
+               message: 'Collection updated successfully!',
+               menuCollection
+            }
+         } catch (error) {
+            return error.message
+         }
+      }
    }
 }

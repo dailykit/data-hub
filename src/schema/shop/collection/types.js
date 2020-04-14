@@ -9,6 +9,18 @@ const typeDefs = gql`
       id: ID!
       name: String
       categories: [Category]
+      availability: String
+   }
+
+   input UpdateMenuCollectionInput {
+      id: ID!
+      name: String
+      categories: [CategoryInput]
+      availability: String
+   }
+   input CategoryInput {
+      title: String
+      products: [ID]
    }
 `
 

@@ -84,7 +84,19 @@ const typeDefs = gql`
       accompanimentType: AccompanimentType
    }
 
+   type MenuCollectionResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      menuCollection: MenuCollection
+   }
+
    type Mutation {
+      createMenuCollection(name: String): MenuCollectionResponse
+
+      updateMenuCollection(
+         input: UpdateMenuCollectionInput
+      ): MenuCollectionResponse
+
       createProduct(name: String): ProductResponse
 
       updateProduct(input: UpdateProductInput): ProductResponse
