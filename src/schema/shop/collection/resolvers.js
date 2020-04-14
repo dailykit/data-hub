@@ -34,10 +34,10 @@ module.exports = {
       }
    },
    Mutation: {
-      createMenuCollection: async (_, { name }, { models }) => {
+      createMenuCollection: async (_, { title }, { models }) => {
          try {
             const { MenuCollection } = models
-            const menuCollection = await MenuCollection.create({ name })
+            const menuCollection = await MenuCollection.create({ title })
             return {
                success: true,
                message: 'Menu Collection created successfully!',
@@ -54,7 +54,7 @@ module.exports = {
                { _id: input.id },
                {
                   $set: {
-                     name: input.name,
+                     name: input.title,
                      categories: input.categories,
                      availability: input.availability
                   }

@@ -27,7 +27,7 @@ const typeDefs = gql`
    }
    type Product {
       id: ID!
-      name: String
+      title: String
       realtime: Boolean
       preOrder: PreOrder
       items: [Item]
@@ -35,7 +35,7 @@ const typeDefs = gql`
 
    input UpdateProductInput {
       id: ID!
-      name: String
+      title: String
       realtime: Boolean
       preOrder: PreOrderInput
       items: [ItemInput]!

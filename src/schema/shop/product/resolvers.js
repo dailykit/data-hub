@@ -42,10 +42,10 @@ module.exports = {
       }
    },
    Mutation: {
-      createProduct: async (_, { name }, { models }) => {
+      createProduct: async (_, { title }, { models }) => {
          try {
             const { Product } = models
-            const product = await Product.create({ name })
+            const product = await Product.create({ title })
             return {
                success: true,
                message: 'Product created successfully!',
@@ -64,7 +64,7 @@ module.exports = {
                },
                {
                   $set: {
-                     name: input.name,
+                     title: input.title,
                      realtime: input.realtime,
                      preOrder: input.preOrder,
                      items: input.items

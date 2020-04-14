@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const productSchema = new Schema(
    {
-      name: String,
+      title: String,
       realtime: Boolean,
       preOrder: {
          isActive: Boolean,

@@ -7,14 +7,14 @@ const typeDefs = gql`
    }
    type MenuCollection {
       id: ID!
-      name: String
+      title: String
       categories: [Category]
       availability: String
    }
 
    input UpdateMenuCollectionInput {
       id: ID!
-      name: String
+      title: String
       categories: [CategoryInput]
       availability: String
    }
