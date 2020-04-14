@@ -44,6 +44,9 @@ const typeDefs = gql`
       labelTemplates: [LabelTemplate]!
       labelTemplate(id: ID): LabelTemplate
 
+      accompanimentTypes: [AccompanimentType]!
+      accompanimentType(id: ID): AccompanimentType
+
       sachets: [Sachet]!
       sachet(id: ID!): Sachet
 

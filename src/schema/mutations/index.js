@@ -78,6 +78,12 @@ const typeDefs = gql`
       labelTemplate: LabelTemplate
    }
 
+   type AccompanimentTypeResponse implements MutationResponse {
+      success: Boolean!
+      message: String!
+      accompanimentType: AccompanimentType
+   }
+
    type Mutation {
       createProduct(name: String): ProductResponse
 
@@ -112,6 +118,8 @@ const typeDefs = gql`
       createPackaging(title: String): PackagingResponse
 
       createLabelTemplate(title: String): LabelTemplateResponse
+
+      createAccompanimentType(title: String): AccompanimentTypeResponse
    }
 `
 

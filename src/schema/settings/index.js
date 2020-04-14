@@ -5,6 +5,7 @@ import Station from './station'
 import Packaging from './packaging'
 import LabelTemplate from './labelTemplate'
 import Utensil from './utensil'
+import AccompanimentType from './accompanimentType'
 
 export {
    ProcessingName,
@@ -13,5 +14,6 @@ export {
    Station,
    Packaging,
    LabelTemplate,
-   Utensil
+   Utensil,
+   AccompanimentType
 }
