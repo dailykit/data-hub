@@ -60,11 +60,13 @@ module.exports = {
             const { Product } = models
             const product = await Product.findOneAndUpdate(
                {
-                  id: input.id
+                  _id: input.id
                },
                {
                   $set: {
                      title: input.title,
+                     tags: input.tags,
+                     description: input.description,
                      realtime: input.realtime,
                      preOrder: input.preOrder,
                      items: input.items

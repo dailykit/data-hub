@@ -16,6 +16,7 @@ const typeDefs = gql`
 
       menus: [Menu]!
       menu(id: ID, name: String): Menu
+      todaysMenu: [Menu]
 
       processings: [IngredientProcessing]!
       processing(id: ID!): IngredientProcessing
