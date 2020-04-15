@@ -2,8 +2,8 @@ module.exports = {
    Query: {
       accompanimentTypes: async (_, __, { models }) => {
          try {
-            const { AccompanimentTypes } = models
-            const accos = await AccompanimentTypes.find({})
+            const { AccompanimentType } = models
+            const accos = await AccompanimentType.find({})
             return accos
          } catch (error) {
             return error.message
@@ -11,8 +11,8 @@ module.exports = {
       },
       accompanimentType: async (_, { id }, { models }) => {
          try {
-            const { AccompanimentTypes } = models
-            const acco = await AccompanimentTypes.findOne({ _id: id })
+            const { AccompanimentType } = models
+            const acco = await AccompanimentType.findOne({ _id: id })
             return acco
          } catch (error) {
             return error.message
