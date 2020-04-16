@@ -1,4 +1,26 @@
 module.exports = {
+   Accompaniment: {
+      type: async (parent, _, { models }) => {
+         try {
+            const { AccompanimentType } = models
+            const type = await AccompanimentType.findOne(parent.type)
+            return type
+         } catch (error) {
+            return error.message
+         }
+      }
+   },
+   AccompanimentProduct: {
+      product: async (parent, _, { models }) => {
+         try {
+            const { Product } = models
+            const product = await Product.findOne(parent.product)
+            return product
+         } catch (error) {
+            return error.message
+         }
+      }
+   },
    Item: {
       defaultRecipe: async (parent, _, { models }) => {
          try {
